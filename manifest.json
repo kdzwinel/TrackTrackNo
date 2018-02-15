@@ -1,0 +1,17 @@
+{
+  "name": "TrackTrackNo",
+  "short_name": "TTN",
+  "description": "Leave me alone!",
+  "author": "Konrad Dzwinel <kdzwinel@gmail.com>",
+  "version": "0.1",
+  "icons": {
+    "48": "assets/icons/icon-48.png",
+    "96": "assets/icons/icon-96.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["src/background.js"]
+  },
+  "permissions": ["<all_urls>", "webRequest", "webRequestBlocking"]
+}
