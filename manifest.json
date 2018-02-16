@@ -1,9 +1,10 @@
 {
   "name": "TrackTrackNo",
   "short_name": "TTN",
-  "description": "Leave me alone!",
+  "description": "__MSG_extensionDescription__",
   "author": "Konrad Dzwinel <kdzwinel@gmail.com>",
   "version": "0.1",
+  "default_locale": "en",
   "icons": {
     "48": "assets/icons/icon-48.png",
     "96": "assets/icons/icon-96.png",
