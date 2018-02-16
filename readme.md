@@ -19,4 +19,5 @@ Web Extension that makes the trackers go away.
 1. Load extension folder as an "unpaced extension" (tested in Chrome and Firefox)
 
 ## About
-Icon made by [Freepik](http://www.freepik.com) - [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+Icon - [Freepik](http://www.freepik.com) - [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+Tracker list - [EasyList](https://easylist.to/) - [GPLv3](https://easylist.to/pages/licence.html)

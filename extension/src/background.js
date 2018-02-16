@@ -1,5 +1,7 @@
 /* eslint-env webextensions, browser */
 
+import * as ABPFilterParser from 'abp-filter-parser';
+
 const browser = window.browser || window.chrome;
 
 const pattern = '<all_urls>';
