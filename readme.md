@@ -1,4 +1,5 @@
 # TrackTrackNo
+[![Build Status](https://travis-ci.org/kdzwinel/TrackTrackNo.svg?branch=master)](https://travis-ci.org/kdzwinel/TrackTrackNo)
 
 Web Extension that makes the trackers go away.
 
