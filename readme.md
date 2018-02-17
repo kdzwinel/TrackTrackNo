@@ -4,7 +4,7 @@
 Web Extension that makes the trackers go away.
 
 ## Features
-- [ ] block known trackers
+- [x] block known trackers
   - [ ] periodically pull tracker list
 - [ ] hendicap fingerprinting
 - [ ] allow to create a safelist of pages and domains
@@ -16,7 +16,8 @@ Web Extension that makes the trackers go away.
 
 ## How to install it
 1. Download or clone this repository
-1. Load extension folder as an "unpaced extension" (tested in Chrome and Firefox)
+1. `yarn && yarn run build`
+1. Load `./dist` folder as an "unpaced extension" (tested in Chrome and Firefox)
 
 ## About
 Icon - [Freepik](http://www.freepik.com) - [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)

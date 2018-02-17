@@ -5,7 +5,7 @@ module.exports = {
   entry: './extension/src/background.js',
   devtool: 'inline-source-map',
   output: {
-    path: path.resolve(__dirname, 'dist/src/background.js'),
+    path: path.resolve(__dirname, 'dist/src/'),
     filename: 'background.js',
   },
   plugins: [
