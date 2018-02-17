@@ -15,21 +15,41 @@ const requestTypeMap = new Map([
   ['object_subrequest', ABPFilterParser.elementTypes.OBJECTSUBREQUEST],
 ]);
 
-const listUrl = browser.extension.getURL('assets/easyprivacy.txt');
+const lists = [
+  'assets/easylist.txt',
+  'assets/easyprivacy.txt',
+];
+
 const listData = {};
 
-fetch(listUrl)
-  .then(response => response.text())
-  .then(listText => ABPFilterParser.parse(listText, listData));
+lists.map((listPath) => {
+  const listURL = browser.extension.getURL(listPath);
+
+  return fetch(listURL)
+    .then(response => response.text())
+    .then(listText => ABPFilterParser.parse(listText, listData));
+});
 
 function verify(requestDetails) {
-  const initiatorUrl = new URL(requestDetails.initiator);
+  const initiator = requestDetails.initiator || requestDetails.url;
+  let initiatorDomain = null;
+
+  try {
+    initiatorDomain = (new URL(initiator)).hostname;
+  } catch (e) {
+    // we fall back to null
+  }
+
   const elementType = requestTypeMap.get(requestDetails.type) || ABPFilterParser.elementTypes.OTHER;
 
   const cancel = ABPFilterParser.matches(listData, requestDetails.url, {
-    domain: initiatorUrl.domain,
+    domain: initiatorDomain,
     elementTypeMaskMap: elementType,
   });
+
+  if (cancel) {
+    console.log(`blocking ${requestDetails.url}`);
+  }
 
   return { cancel };
 }
