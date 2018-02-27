@@ -6,8 +6,6 @@ const $blocked = document.querySelector('.js-blocked');
 
 browser.runtime
   .sendMessage({ action: GET_TAB_INFO }, (response) => {
-    console.log(response);
-
     $safelisted.innerText = Boolean(response.safelisted);
     $blocked.innerText = Array.isArray(response.blocked) ? response.blocked.length : 0;
   });

@@ -30,8 +30,13 @@ function verify(request) {
 
     if (safelist.isSafe(request.url)) {
       safeTabs.add(request.tabId);
+
+      browser.browserAction.setBadgeText({ text: 's', tabId: request.tabId });
+      browser.browserAction.setBadgeBackgroundColor({ color: '#0f0', tabId: request.tabId });
     } else {
       safeTabs.delete(request.tabId);
+
+      browser.browserAction.setBadgeText({ text: '', tabId: request.tabId });
     }
 
     return { cancel: false };
@@ -50,6 +55,9 @@ function verify(request) {
   if (cancel) {
     console.log(`blocking ${request.url}`);
     tabRegistry.tabAddBlocked(request.tabId, request.url);
+
+    browser.browserAction.setBadgeText({ text: 'b', tabId: request.tabId });
+    browser.browserAction.setBadgeBackgroundColor({ color: '#f00', tabId: request.tabId });
   }
 
   return { cancel };
