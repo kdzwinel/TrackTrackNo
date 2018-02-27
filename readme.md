@@ -6,13 +6,10 @@ Web Extension that makes the trackers go away.
 ## Features
 - [x] block known trackers
   - [ ] periodically pull tracker list
-- [ ] hendicap fingerprinting
-- [ ] allow to create a safelist of pages and domains
+- [ ] allow to create a safelist of domains
 - [ ] allow to easily disable & reenable
-- [ ] opt-out anonymized user stats
-- [ ] ability to send feedback
-- [ ] onboarding experience
-- [ ] deboarding experience
+- [x] show popup with information about the page
+  - [ ] list all blocked resources
 
 ## How to install it
 1. Download or clone this repository
