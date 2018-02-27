@@ -1,60 +1,49 @@
 import TrackerRecognizer from './TrackerRecognizer';
 import TabRegistry from './TabRegistry';
-import { domainFromUrl } from './utils';
+import URLSafelist from './URLSafelist';
 
 const browser = window.browser || window.chrome;
-const tabRegistry = new TabRegistry();
-const recognizer = new TrackerRecognizer();
-
-// TODO make dynamic
-const domainSafelist = new Set([
-  'stackoverflow.com',
-  'github.com',
-]);
-const tabSafelist = new Set();
-
 const MAIN_FRAME = 'main_frame';
+
+const tabRegistry = new TabRegistry();
+const safelist = new URLSafelist();
+const recognizer = new TrackerRecognizer();
+const safeTabs = new Set();
+
 const lists = [
   'assets/easylist.txt',
   'assets/easyprivacy.txt',
 ].map(path => browser.extension.getURL(path));
 
-console.time('Loading lists.');
-recognizer
-  .readLists(lists)
-  .then(() => console.timeEnd('Loading lists.'));
+recognizer.readLists(lists);
+safelist.addDomains(['github.com', 'stackoverflow.com']);
 
 function verify(request) {
   if (request.type === MAIN_FRAME) {
     tabRegistry.tabChangeUrl(request.tabId, request.url);
 
-    const domain = domainFromUrl(request.url);
-    if (domain && domainSafelist.has(domain)) {
-      tabSafelist.add(request.tabId);
-      console.log(`Tab ${request.tabId} added to the safelist`);
+    if (safelist.isSafe(request.url)) {
+      safeTabs.add(request.tabId);
     } else {
-      tabSafelist.delete(request.tabId);
-      console.log(`Tab ${request.tabId} removed from the safelist`);
+      safeTabs.delete(request.tabId);
     }
-    // TODO should we skip check for main frames?
-  } else if (tabSafelist.has(request.tabId)) {
-    console.log(`Tab ${request.tabId} on a safelist`);
+
     return { cancel: false };
   }
 
-  const initiatorUrl = request.initiator || request.url;
+  if (safeTabs.has(request.tabId)) {
+    return { cancel: false };
+  }
 
   const cancel = recognizer.isTracker({
     url: request.url,
     type: request.type,
-    initiatorUrl,
+    initiatorUrl: request.initiator || request.url,
   });
 
   if (cancel) {
     console.log(`blocking ${request.url}`);
     tabRegistry.tabAddBlocked(request.tabId, request.url);
-
-    console.log(tabRegistry.getTabInfo(request.tabId));
   }
 
   return { cancel };
