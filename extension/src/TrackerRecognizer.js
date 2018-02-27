@@ -1,4 +1,5 @@
 import * as ABPFilterParser from 'abp-filter-parser';
+import { domainFromUrl } from './utils';
 
 const requestTypeMap = new Map([
   ['script', ABPFilterParser.elementTypes.SCRIPT],
@@ -25,13 +26,7 @@ class TrackerRecognizer {
   }
 
   isTracker({ url, initiatorUrl, type }) {
-    let initiatorDomain = null;
-
-    try {
-      initiatorDomain = (new URL(initiatorUrl)).hostname;
-    } catch (e) {
-      // we fall back to null
-    }
+    const initiatorDomain = domainFromUrl(initiatorUrl);
     const elementType = requestTypeMap.get(type) || ABPFilterParser.elementTypes.OTHER;
 
     return ABPFilterParser.matches(this.listData, url, {
