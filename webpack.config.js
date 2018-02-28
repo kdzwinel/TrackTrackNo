@@ -17,6 +17,7 @@ module.exports = {
       { from: 'extension/assets', to: path.resolve(__dirname, 'dist/assets') },
       { from: 'extension/manifest.json', to: path.resolve(__dirname, 'dist/manifest.json') },
       { from: 'extension/src/popup/popup.html', to: path.resolve(__dirname, 'dist/src/popup.html') },
+      { from: 'extension/src/popup/popup.css', to: path.resolve(__dirname, 'dist/src/popup.css') },
     ]),
   ],
 };

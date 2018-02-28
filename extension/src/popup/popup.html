@@ -3,17 +3,17 @@
 <head>
 <meta charset=utf-8>
 <title>TrackTrackNo Popup</title>
-<style>
-  body {
-    width: 200px;
-    height: 150px;
-  }
-</style>
+<link href="./popup.css" rel="stylesheet" />
 </head>
-<body>
+<body class='container js-container'>
+
 <main>
-  <p>Blocked: <span class='js-blocked'>?</span></p>
-  <p>Safelisted: <span class='js-safelisted'>?</span></p>
+    <p>Requests blocked: <span class='js-blocked'>?</span></p>
+    <p>
+      <input type='checkbox' class='js-safelisted' id='safelisted'/>
+      <label for='safelisted'>disabled for this domain</label>
+    </p>
+    <p><a href='#'>Report issue</a></p>
 </main>
 
 <script src='./popup.js'></script>

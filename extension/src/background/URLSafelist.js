@@ -1,12 +1,16 @@
-import { domainFromUrl } from './utils';
+import { domainFromUrl } from '../utils';
 
 class URLSafelist {
   constructor() {
     this.domainSafelist = new Set();
   }
 
-  addDomains(domains) {
-    domains.forEach(d => this.domainSafelist.add(d));
+  addDomain(domain) {
+    this.domainSafelist.add(domain);
+  }
+
+  removeDomain(domain) {
+    this.domainSafelist.delete(domain);
   }
 
   isSafe(url) {

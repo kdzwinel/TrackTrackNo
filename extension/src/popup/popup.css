@@ -1,0 +1,19 @@
+.container {
+  --bg-color: #e1e6e9;
+  --text-color: #17191a;
+  --primary-color: #4ad093;
+  --suplement-color: #d04a79;
+  --secondary-color: #616975;
+
+  width: 200px;
+  height: 150px;
+  padding: 4px;
+  margin: 0;
+  border: solid var(--primary-color) 2px;
+  color: var(--text-color);
+  font-family: monospace;
+}
+
+.container--warn {
+  border-color: var(--suplement-color);
+}

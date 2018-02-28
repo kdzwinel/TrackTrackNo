@@ -1,5 +1,5 @@
 import * as ABPFilterParser from 'abp-filter-parser';
-import { domainFromUrl } from './utils';
+import { domainFromUrl } from '../utils';
 
 const requestTypeMap = new Map([
   ['script', ABPFilterParser.elementTypes.SCRIPT],
