@@ -13,6 +13,10 @@ class URLSafelist {
     this.domainSafelist.delete(domain);
   }
 
+  toArray() {
+    return Array.from(this.domainSafelist);
+  }
+
   isSafe(url) {
     const domain = domainFromUrl(url);
 

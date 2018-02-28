@@ -42,4 +42,5 @@ $safelisted.addEventListener('change', () => {
   } else {
     browser.runtime.sendMessage({ action: SAFELIST_DOMAIN_REMOVE, domain });
   }
+  window.close();
 });

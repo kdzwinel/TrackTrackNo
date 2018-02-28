@@ -5,6 +5,7 @@ import { GET_TAB_INFO, SAFELIST_DOMAIN_ADD, SAFELIST_DOMAIN_REMOVE } from '../me
 
 const browser = window.browser || window.chrome;
 const MAIN_FRAME = 'main_frame';
+const SAFELIST_STORE_KEY = 'safelist';
 
 const tabRegistry = new TabRegistry();
 const safelist = new URLSafelist();
@@ -18,10 +19,11 @@ const lists = [
 
 recognizer.readLists(lists);
 
-[
-  'github.com',
-  'stackoverflow.com',
-].forEach(domain => safelist.addDomain(domain));
+browser.storage.local.get(SAFELIST_STORE_KEY, (response) => {
+  if (Array.isArray(response[SAFELIST_STORE_KEY])) {
+    response[SAFELIST_STORE_KEY].forEach(domain => safelist.addDomain(domain));
+  }
+});
 
 function verifyRequest(request) {
   // request made by something other than a tab (browser, extension)
@@ -59,26 +61,27 @@ function verifyRequest(request) {
   return { cancel };
 }
 
-async function respondToMessage(message, sender, sendResponse) {
+function respondToMessage(message, sender, sendResponse) {
   if (sender.id !== browser.runtime.id) {
     return;
   }
 
   if (message.action === GET_TAB_INFO) {
-    const safelisted = safeTabs.has(message.tabId);
-    const { blocked } = tabRegistry.getTabInfo(message.tabId);
+    const tabInfo = tabRegistry.getTabInfo(message.tabId);
 
     sendResponse({
-      blocked,
-      safelisted,
+      blocked: tabInfo.blocked,
+      safelisted: safeTabs.has(message.tabId),
     });
     return;
   } else if (message.action === SAFELIST_DOMAIN_ADD) {
     safelist.addDomain(message.domain);
     browser.tabs.reload(message.tabId);
+    browser.storage.local.set({ [SAFELIST_STORE_KEY]: safelist.toArray() });
   } else if (message.action === SAFELIST_DOMAIN_REMOVE) {
     safelist.removeDomain(message.domain);
     browser.tabs.reload(message.tabId);
+    browser.storage.local.set({ [SAFELIST_STORE_KEY]: safelist.toArray() });
   }
 
   sendResponse(null);
