@@ -17,12 +17,8 @@ class TrackerRecognizer {
     this.listData = {};
   }
 
-  readLists(lists) {
-    const listsLoading = lists.map(url => fetch(url)
-      .then(response => response.text())
-      .then(listText => ABPFilterParser.parse(listText, this.listData)));
-
-    return Promise.all(listsLoading);
+  addBlocklist(text) {
+    ABPFilterParser.parse(text, this.listData);
   }
 
   isTracker({ url, initiatorUrl, type }) {

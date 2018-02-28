@@ -1,6 +1,7 @@
 import TrackerRecognizer from './TrackerRecognizer';
 import TabRegistry from './TabRegistry';
 import URLSafelist from './URLSafelist';
+import loadBlocklists from './loadBlocklists';
 import { GET_TAB_INFO, SAFELIST_DOMAIN_ADD, SAFELIST_DOMAIN_REMOVE } from '../messages';
 
 const browser = window.browser || window.chrome;
@@ -12,12 +13,8 @@ const safelist = new URLSafelist();
 const recognizer = new TrackerRecognizer();
 const safeTabs = new Set();
 
-const lists = [
-  'assets/easylist.txt',
-  'assets/easyprivacy.txt',
-].map(path => browser.extension.getURL(path));
-
-recognizer.readLists(lists);
+loadBlocklists()
+  .then(lists => lists.forEach(list => recognizer.addBlocklist(list)));
 
 browser.storage.local.get(SAFELIST_STORE_KEY, (response) => {
   if (Array.isArray(response[SAFELIST_STORE_KEY])) {
