@@ -9,7 +9,7 @@ Web Extension that makes the trackers go away.
 - [x] allow to create a safelist of domains
   - [x] preserve safelist
 - [x] show popup with information about the page
-  - [ ] list all blocked resources
+  - [x] list all blocked resources
 
 ## How to install it
 1. Download or clone this repository

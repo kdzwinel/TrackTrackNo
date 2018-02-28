@@ -1,5 +1,8 @@
 {
   "extensionDescription": {
     "message": "Zostawcie mnie w spokoju!"
+  },
+  "empty": {
+    "message": "pusto"
   }
 }

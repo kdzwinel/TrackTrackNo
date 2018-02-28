@@ -1,5 +1,8 @@
 {
   "extensionDescription": {
     "message": "Leave me alone!"
+  },
+  "empty": {
+    "message": "empty"
   }
 }

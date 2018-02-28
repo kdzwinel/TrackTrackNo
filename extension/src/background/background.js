@@ -40,6 +40,11 @@ function verifyRequest(request) {
       safeTabs.delete(request.tabId);
     }
 
+    browser.browserAction.setIcon({
+      path: 'assets/icons/icon-48.png',
+      tabId: request.tabId,
+    });
+
     return { cancel: false };
   }
 
@@ -56,6 +61,10 @@ function verifyRequest(request) {
   if (cancel) {
     console.log(`blocking ${request.url}`);
     tabRegistry.tabAddBlocked(request.tabId, request.url);
+    browser.browserAction.setIcon({
+      path: 'assets/icons/icon-48-alt.png',
+      tabId: request.tabId,
+    });
   }
 
   return { cancel };

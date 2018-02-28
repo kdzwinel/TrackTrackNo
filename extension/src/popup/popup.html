@@ -9,11 +9,13 @@
 
 <main>
     <p>Requests blocked: <span class='js-blocked'>?</span></p>
+    <div class='requests-list requests-list--empty js-requests-list'></div>
     <p>
       <input type='checkbox' class='js-safelisted' id='safelisted'/>
       <label for='safelisted'>disabled for this domain</label>
     </p>
-    <p><a href='https://github.com/kdzwinel/TrackTrackNo/issues/new'>Report issue</a></p>
+
+    <a class='report-button' href='https://github.com/kdzwinel/TrackTrackNo/issues/new'>Report issue</a>
 </main>
 
 <script src='./popup.js'></script>

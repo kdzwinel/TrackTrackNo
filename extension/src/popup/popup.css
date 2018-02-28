@@ -17,3 +17,38 @@
 .container--warn {
   border-color: var(--suplement-color);
 }
+
+.report-button {
+  color: var(--secondary-color);
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+}
+
+.requests-list {
+  position: relative;
+  width: 100%;
+  height: 75px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-top: solid var(--secondary-color) 1px;
+  border-bottom: solid var(--secondary-color) 1px;
+}
+
+.requests-list--empty:after {
+  content: '<__MSG_empty__>';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: var(--secondary-color);
+}
+
+.requests-list__request {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+}
