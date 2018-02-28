@@ -4,5 +4,14 @@
   },
   "empty": {
     "message": "pusto"
+  },
+  "requests_blocked": {
+    "message": "Zablokowanych zasobów"
+  },
+  "disabled_for_domain": {
+    "message": "nieaktywny dla tej domeny"
+  },
+  "report_issue": {
+    "message": "zgłoś błąd"
   }
 }

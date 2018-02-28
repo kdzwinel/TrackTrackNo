@@ -5,13 +5,14 @@
   --suplement-color: #d04a79;
   --secondary-color: #616975;
 
-  width: 200px;
-  height: 150px;
+  width: 220px;
+  height: 180px;
   padding: 4px;
   margin: 0;
   border: solid var(--primary-color) 2px;
   color: var(--text-color);
   font-family: monospace;
+  font-size: 11px;
 }
 
 .container--warn {
@@ -28,7 +29,7 @@
 .requests-list {
   position: relative;
   width: 100%;
-  height: 75px;
+  height: 90px;
   overflow-x: hidden;
   overflow-y: scroll;
   border-top: solid var(--secondary-color) 1px;

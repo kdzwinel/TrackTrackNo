@@ -4,5 +4,14 @@
   },
   "empty": {
     "message": "empty"
+  },
+  "requests_blocked": {
+    "message": "Requests blocked"
+  },
+  "disabled_for_domain": {
+    "message": "disabled for this domain"
+  },
+  "report_issue": {
+    "message": "report issue"
   }
 }

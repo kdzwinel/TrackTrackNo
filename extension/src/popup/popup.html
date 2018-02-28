@@ -8,14 +8,14 @@
 <body class='container js-container'>
 
 <main>
-    <p>Requests blocked: <span class='js-blocked'>?</span></p>
+    <p><span data-trans-key='requests_blocked'></span>: <span class='js-blocked'>?</span></p>
     <div class='requests-list requests-list--empty js-requests-list'></div>
     <p>
       <input type='checkbox' class='js-safelisted' id='safelisted'/>
-      <label for='safelisted'>disabled for this domain</label>
+      <label for='safelisted' data-trans-key='disabled_for_domain'></label>
     </p>
 
-    <a class='report-button' href='https://github.com/kdzwinel/TrackTrackNo/issues/new'>Report issue</a>
+    <a class='report-button' href='https://github.com/kdzwinel/TrackTrackNo/issues/new' data-trans-key='report_issue'></a>
 </main>
 
 <script src='./popup.js'></script>

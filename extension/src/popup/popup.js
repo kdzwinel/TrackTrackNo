@@ -52,6 +52,7 @@ getActiveTab()
     browser.runtime.sendMessage({ action: GET_TAB_INFO, tabId }, init);
   });
 
+// handle adding/removing from safelist
 $safelisted.addEventListener('change', () => {
   if ($safelisted.checked) {
     browser.runtime.sendMessage({ action: SAFELIST_DOMAIN_ADD, domain });
@@ -59,4 +60,9 @@ $safelisted.addEventListener('change', () => {
     browser.runtime.sendMessage({ action: SAFELIST_DOMAIN_REMOVE, domain });
   }
   window.close();
+});
+
+// apply translations
+Array.from(document.querySelectorAll('[data-trans-key]')).forEach((item) => {
+  item.innerText = browser.i18n.getMessage(item.dataset.transKey);
 });
