@@ -6,11 +6,11 @@ abbrev@1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
 
-abp-filter-parser@^0.2.0:
+"abp-filter-parser@https://github.com/kdzwinel/abp-filter-parser#5cc57b5":
   version "0.2.0"
-  resolved "https://registry.npmjs.org/abp-filter-parser/-/abp-filter-parser-0.2.0.tgz#6842ff1b297626bca21b5226fc1eee5335e7bb81"
+  resolved "https://github.com/kdzwinel/abp-filter-parser#5cc57b55406121d058587df1a44836f2210ac1e0"
   dependencies:
-    bloom-filter-js "0.0.11"
+    bloom-filter-js "0.0.12"
 
 acorn-dynamic-import@^2.0.0:
   version "2.0.2"
@@ -234,9 +234,9 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bloom-filter-js@0.0.11:
-  version "0.0.11"
-  resolved "https://registry.npmjs.org/bloom-filter-js/-/bloom-filter-js-0.0.11.tgz#9a6bb22086e9f81dada27d700ef5e380fac48fcd"
+bloom-filter-js@0.0.12:
+  version "0.0.12"
+  resolved "https://registry.npmjs.org/bloom-filter-js/-/bloom-filter-js-0.0.12.tgz#89550f1b97af1bf5f2fba4048a647ebf3d35d11f"
 
 bluebird@^3.5.1:
   version "3.5.1"

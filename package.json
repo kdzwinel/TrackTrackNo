@@ -18,6 +18,6 @@
     "webpack": "^3.11.0"
   },
   "dependencies": {
-    "abp-filter-parser": "^0.2.0"
+    "abp-filter-parser": "https://github.com/kdzwinel/abp-filter-parser#5cc57b5"
   }
 }
