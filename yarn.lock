@@ -6,9 +6,9 @@ abbrev@1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
 
-"abp-filter-parser@https://github.com/kdzwinel/abp-filter-parser#5cc57b5":
+"abp-filter-parser@https://github.com/kdzwinel/abp-filter-parser#286c77c":
   version "0.2.0"
-  resolved "https://github.com/kdzwinel/abp-filter-parser#5cc57b55406121d058587df1a44836f2210ac1e0"
+  resolved "https://github.com/kdzwinel/abp-filter-parser#286c77c948eacdb88b7ac3ad938f1a27f3d6f82f"
   dependencies:
     bloom-filter-js "0.0.12"
 

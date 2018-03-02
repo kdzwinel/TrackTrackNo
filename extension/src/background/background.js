@@ -1,12 +1,12 @@
 import TrackerRecognizer from './TrackerRecognizer';
 import TabRegistry from './TabRegistry';
 import URLSafelist from './URLSafelist';
+import loadSafelist from './loadSafelist';
 import loadBlocklists from './loadBlocklists';
 import { GET_TAB_INFO, SAFELIST_DOMAIN_ADD, SAFELIST_DOMAIN_REMOVE } from '../messages';
 
 const browser = window.browser || window.chrome;
 const MAIN_FRAME = 'main_frame';
-const SAFELIST_STORE_KEY = 'safelist';
 
 const tabRegistry = new TabRegistry();
 const safelist = new URLSafelist();
@@ -16,11 +16,8 @@ const safeTabs = new Set();
 loadBlocklists()
   .then(lists => lists.forEach(list => recognizer.addBlocklist(list)));
 
-browser.storage.local.get(SAFELIST_STORE_KEY, (response) => {
-  if (Array.isArray(response[SAFELIST_STORE_KEY])) {
-    response[SAFELIST_STORE_KEY].forEach(domain => safelist.addDomain(domain));
-  }
-});
+loadSafelist()
+  .then(domains => domains.forEach(domain => safelist.addDomain(domain)));
 
 function verifyRequest(request) {
   // request made by something other than a tab (browser, extension)

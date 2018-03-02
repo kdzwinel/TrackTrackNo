@@ -20,11 +20,7 @@ class URLSafelist {
   isSafe(url) {
     const domain = domainFromUrl(url);
 
-    if (domain && this.domainSafelist.has(domain)) {
-      return true;
-    }
-
-    return false;
+    return domain && this.domainSafelist.has(domain);
   }
 }
 
