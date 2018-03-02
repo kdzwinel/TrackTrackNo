@@ -64,5 +64,6 @@ $safelisted.addEventListener('change', () => {
 
 // apply translations
 Array.from(document.querySelectorAll('[data-trans-key]')).forEach((item) => {
+  // eslint-disable-next-line no-param-reassign
   item.innerText = browser.i18n.getMessage(item.dataset.transKey);
 });

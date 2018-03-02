@@ -1,8 +1,8 @@
 import TrackerRecognizer from './TrackerRecognizer';
 import TabRegistry from './TabRegistry';
 import URLSafelist from './URLSafelist';
-import loadSafelist from './loadSafelist';
-import loadBlocklists from './loadBlocklists';
+import { loadSafelist, saveSafelist } from './safelistStorage';
+import loadBlocklists from './blocklistStorage';
 import { GET_TAB_INFO, SAFELIST_DOMAIN_ADD, SAFELIST_DOMAIN_REMOVE } from '../messages';
 
 const browser = window.browser || window.chrome;
@@ -80,11 +80,11 @@ function respondToMessage(message, sender, sendResponse) {
   } else if (message.action === SAFELIST_DOMAIN_ADD) {
     safelist.addDomain(message.domain);
     browser.tabs.reload(message.tabId);
-    browser.storage.local.set({ [SAFELIST_STORE_KEY]: safelist.toArray() });
+    saveSafelist(safelist.toArray());
   } else if (message.action === SAFELIST_DOMAIN_REMOVE) {
     safelist.removeDomain(message.domain);
     browser.tabs.reload(message.tabId);
-    browser.storage.local.set({ [SAFELIST_STORE_KEY]: safelist.toArray() });
+    saveSafelist(safelist.toArray());
   }
 
   sendResponse(null);

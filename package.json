@@ -6,7 +6,7 @@
     "url": "git@github.com:kdzwinel/TrackTrackNo.git"
   },
   "scripts": {
-    "test": "eslint extension/**/*.js",
+    "test": "eslint extension/",
     "build": "webpack",
     "build-watch": "webpack --watch"
   },
