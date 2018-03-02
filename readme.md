@@ -24,6 +24,9 @@ Chrome and Firefox extension built in vanilla JavaScript. Trackers are recognize
 
 Code is organized into two main folders: `background` - containing code of the background page, and `popup` - containing code of the browser action popup. Background page communicates with the popup using `browser.runtime.sendMessage`.
 
+### Testing
+Extension code is linted and partially unit tested (all classes) using jest. To run all tests call `yarn test`.
+
 ### Bucketlist
 - [ ] Investigate using [ad-block](https://github.com/brave/ad-block) instead of abp-filter-parser
 - [ ] Investigate recognizing trackers from outside of the blocklist (just like Privacy Badger does)
@@ -32,9 +35,6 @@ Code is organized into two main folders: `background` - containing code of the b
 - [ ] Use newely downloaded lists right away (don't wait for browser/extension reload)
 - [ ] Don't fetch lists more often than specified in the list header (`! Expires: 4 days (update frequency)`)
 - [ ] Add functional tests
-
-### Testing
-Extension code is linted and partially unit tested (all classes) using jest. To run all tests call `yarn test`.
 
 ## About
 
