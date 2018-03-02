@@ -1,3 +1,4 @@
+// keep track of all requests blocked in each tab
 class TabRegistry {
   constructor() {
     this.registry = new Map();

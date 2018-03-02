@@ -25,6 +25,7 @@ function verifyRequest(request) {
     return { cancel: false };
   }
 
+  // top level navigation
   if (request.type === MAIN_FRAME) {
     tabRegistry.tabChangeUrl(request.tabId, request.url);
 
@@ -42,6 +43,7 @@ function verifyRequest(request) {
     return { cancel: false };
   }
 
+  // do not cancel any of the requests if page is safelisted
   if (safeTabs.has(request.tabId)) {
     return { cancel: false };
   }
@@ -54,17 +56,21 @@ function verifyRequest(request) {
 
   if (cancel) {
     console.log(`blocking ${request.url}`);
-    tabRegistry.tabAddBlocked(request.tabId, request.url);
+
     browser.browserAction.setIcon({
       path: 'assets/icons/icon-48-alt.png',
       tabId: request.tabId,
     });
+
+    // save info about blocked requests
+    tabRegistry.tabAddBlocked(request.tabId, request.url);
   }
 
   return { cancel };
 }
 
 function respondToMessage(message, sender, sendResponse) {
+  // only respond to messages comming from this extension
   if (sender.id !== browser.runtime.id) {
     return;
   }

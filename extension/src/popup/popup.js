@@ -14,7 +14,7 @@ const $blocked = document.querySelector('.js-blocked');
 let tabId = null;
 let domain = null;
 
-function showList(urls) {
+function renderList(urls) {
   $list.classList.remove(LIST_EMPTY_CLASS);
 
   const df = document.createDocumentFragment();
@@ -29,7 +29,7 @@ function showList(urls) {
   $list.appendChild(df);
 }
 
-function init(data) {
+function render(data) {
   if (!data) {
     return;
   }
@@ -41,7 +41,7 @@ function init(data) {
 
   if (blockedLength) {
     $container.classList.add(CONTAINER_WARN_CLASS);
-    showList(data.blocked);
+    renderList(data.blocked);
   }
 }
 
@@ -49,7 +49,7 @@ getActiveTab()
   .then((tab) => {
     tabId = tab ? tab.id : null;
     domain = tab ? domainFromUrl(tab.url) : null;
-    browser.runtime.sendMessage({ action: GET_TAB_INFO, tabId }, init);
+    browser.runtime.sendMessage({ action: GET_TAB_INFO, tabId }, render);
   });
 
 // handle adding/removing from safelist

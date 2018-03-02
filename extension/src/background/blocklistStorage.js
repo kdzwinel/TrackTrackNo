@@ -12,6 +12,7 @@ const BLOCKLISTS = [
 ];
 
 function getBuildInBlocklists() {
+  // read embedded blocklist from disk
   return Promise.all(BLOCKLISTS
     .filter(list => list.local)
     .map((list) => {
@@ -66,6 +67,7 @@ function updateList(name) {
 }
 
 function checkForUpdates() {
+  // check if any of the blocklists expired and needs to be updated
   browser.storage.local.get(BLOCKLISTS_STORE_KEY, (response) => {
     if (!Array.isArray(response[BLOCKLISTS_STORE_KEY])) {
       return;
