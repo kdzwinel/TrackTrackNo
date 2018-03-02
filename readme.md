@@ -5,9 +5,9 @@ Web Extension that makes the trackers go away.
 
 ## Features
 - [x] block known trackers
-  - [ ] periodically pull tracker list
+  - [x] periodically pull latest tracker list
 - [x] allow to create a safelist of domains
-  - [x] preserve safelist
+  - [x] store safelist locally
 - [x] show popup with information about the page
   - [x] list all blocked resources
 
