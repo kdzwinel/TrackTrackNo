@@ -3,7 +3,7 @@
   "short_name": "TTN",
   "description": "__MSG_extensionDescription__",
   "author": "Konrad Dzwinel <kdzwinel@gmail.com>",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "default_locale": "en",
   "browser_action": {
     "default_icon": "assets/icons/icon-48.png",
