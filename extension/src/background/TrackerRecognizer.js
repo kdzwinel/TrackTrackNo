@@ -25,6 +25,10 @@ class TrackerRecognizer {
     const initiatorDomain = domainFromUrl(initiatorUrl);
     const elementType = requestTypeMap.get(type) || ABPFilterParser.elementTypes.OTHER;
 
+    if (Object.keys(this.listData).length === 0) {
+      return false;
+    }
+
     return ABPFilterParser.matches(this.listData, url, {
       domain: initiatorDomain,
       elementTypeMaskMap: elementType,

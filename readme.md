@@ -31,6 +31,10 @@ Code is organized into two main folders: `background` - containing code of the b
 - [ ] Retry if updating list fails
 - [ ] Use newely downloaded lists right away (don't wait for browser/extension reload)
 - [ ] Don't fetch lists more often than specified in the list header (`! Expires: 4 days (update frequency)`)
+- [ ] Add functional tests
+
+### Testing
+Extension code is linted and partially unit tested (all classes) using jest. To run all tests call `yarn test`.
 
 ## About
 
