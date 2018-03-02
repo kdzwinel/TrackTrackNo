@@ -6,7 +6,7 @@
     "url": "git@github.com:kdzwinel/TrackTrackNo.git"
   },
   "scripts": {
-    "test": "NODE_ENV=testing eslint extension/ && jest",
+    "test": "eslint extension/ && NODE_ENV=testing jest",
     "build": "webpack",
     "build-watch": "webpack --watch"
   },
@@ -28,6 +28,9 @@
     "abp-filter-parser": "https://github.com/kdzwinel/abp-filter-parser#286c77c"
   },
   "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
     "transformIgnorePatterns": []
   }
 }
